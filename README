@@ -1,0 +1,14 @@
+Pythonic InterstateAPI Wrapper
+    (http://interstateapp.com)
+
+    API Objects & Methods:
+        -Roadmap Object:
+        --roadmap/get
+        --roadmap/listAll
+        --roadmap/roads
+        -Road Object:
+        --road/get
+        --road/updates
+
+    Requires:
+        -Python 2.6+
