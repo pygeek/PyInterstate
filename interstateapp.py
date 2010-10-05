@@ -49,7 +49,7 @@ class Roadmap(InterstateApp):
             roadmap_id)
         roadmap = urllib2.urlopen(get_url)
         roadmap = roadmap.read()
-        print(json.loads(roadmap))
+        return json.loads(roadmap)
     
     def listAll(self):
         """roadmap/listAll:
