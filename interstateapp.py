@@ -1,11 +1,9 @@
-#Interstate App Library
+#InterstateApp Library
 import urllib2
-import os
 import json
 
 class InterstateApp(object):
-    """
-        Pythonic InterstateApp API Wrapper
+    """Pythonic InterstateApp API Wrapper
         (http://interstateapp.com)
         
         Requires:
@@ -15,48 +13,48 @@ class InterstateApp(object):
         self.protocol = "http://"
         self.base_url = "interstateapp.com"
         self.api_version = "v1"
-        public_key = "public_key"
-        private_key = "private_key"
+        public_key = "e88846d18fbb535a3deb5dff33253e691284691984.8324-pygeek"
+        private_key = "3cc292f563039656d37a00a20082bb44a4647d41c7b1a5b63b42847367c4ef89"
         
-        """
-            Installing opener authentication for inevitable,\
+        """Installing opener authentication for inevitable,\
             subsequent requests
         """
         # create a password manager
         password_mgr = urllib2.HTTPPasswordMgrWithDefaultRealm()
-        password_mgr.add_password(None, self.protocol+self.base_url,\
-            public_key, private_key)
+        password_mgr.add_password(None, self.protocol + \
+            self.base_url, public_key, private_key)
         handler = urllib2.HTTPBasicAuthHandler(password_mgr)
         # create "opener" (OpenerDirector instance)
         urlopener = urllib2.build_opener(handler)
         urllib2.install_opener(urlopener)
+        
 
 class Roadmap(InterstateApp):
 
-    def get(self,roadmap_id):
-        """
-        roadmap/get:
-            Retrieve information regarding a specific Interstate roadmap.
+    def get(self, roadmap_id):
+        """roadmap/get:
+            Retrieve information regarding a specific \
+            Interstate roadmap.
         Parameters:
             - id(Roadmap ID)
               The unique id of the Interstate roadmap.      
         Example Request:
-            http://interstateapp.com/api/v1/roadmap/get/id/\
+            http://interstateapp.com/api/v1/roadmap/get/id/ \
               4c2d3b5f8ead0ec070010000
         Outputs: JSON
         See: http://interstateapp.com/developers/method/0/0  
         """
-        get_url = "{0}{1}/api/{2}/roadmap/get/id/{3}"\
-            .format(self.protocol,self.base_url,self.api_version\
-            ,roadmap_id)
+        get_url = "{0}{1}/api/{2}/roadmap/get/id/{3}" \
+            .format(self.protocol, self.base_url, self.api_version, \
+            roadmap_id)
         roadmap = urllib2.urlopen(get_url)
         roadmap = roadmap.read()
-        return json.loads(roadmap)
+        print(json.loads(roadmap))
     
     def listAll(self):
-        """
-        roadmap/listAll:
-            List all Interstate roadmaps associated with the used API Key.
+        """roadmap/listAll:
+            List all Interstate roadmaps associated with the \
+            used API Key.
         Parameters:
             None
         Example Request:
@@ -64,28 +62,27 @@ class Roadmap(InterstateApp):
         Outputs: JSON
         See: http://interstateapp.com/developers/method/0/1
         """
-        listAll_url = "{0}{1}/api/{2}/roadmap/listAll"\
-            .format(self.protocol,self.base_url,self.api_version)
+        listAll_url = "{0}{1}/api/{2}/roadmap/listAll" \
+            .format(self.protocol, self.base_url, self.api_version)
         roadmap = urllib2.urlopen(listAll_url)
         roadmap = roadmap.read()
         return json.loads(roadmap)
         
-    def roads(self,roadmap_id):
-        """
-        roadmap/roads:
+    def roads(self, roadmap_id):
+        """roadmap/roads:
             List all roads attached to the specific Interstate roadmap.
         Parameters:
             - id(Roadmap ID)
               The unique id of the Interstate roadmap. 
         Example Request:
-            http://interstateapp.com/api/v1/roadmap/roads/id/\
+            http://interstateapp.com/api/v1/roadmap/roads/id/ \
               4c2d3b5f8ead0ec070010000
         Outputs: JSON
         See: http://interstateapp.com/developers/method/0/2
         """
-        roads_url = "{0}{1}/api/{2}/roadmap/roads/id/{3}"\
-            .format(self.protocol,self.base_url,self.api_version\
-            ,roadmap_id)
+        roads_url = "{0}{1}/api/{2}/roadmap/roads/id/{3}" \
+            .format(self.protocol, self.base_url, self.api_version, \
+            roadmap_id)
         roadmap = urllib2.urlopen(roads_url)
         roadmap = roadmap.read()
         return json.loads(roadmap)
@@ -93,29 +90,27 @@ class Roadmap(InterstateApp):
 
 class Road(InterstateApp):
 
-    def get(self,road_id):
-        """
-        road/get:
+    def get(self, road_id):
+        """road/get:
             Retrieve information regarding a specific Interstate road.
         Parameters:
             - id(Road ID)
               The unique id of the Interstate road. 
         Example Request:
-            http://interstateapp.com/api/v1/road/get/id/\
+            http://interstateapp.com/api/v1/road/get/id/ \
               4c2d3b5f8ead0ec070010000
         Outputs: JSON
         See: http://interstateapp.com/developers/method/1/0
         """
-        get_url = "{0}{1}/api/{2}/road/get/id/{3}"\
-            .format(self.protocol,self.base_url,self.api_version\
-            ,road_id)
+        get_url = "{0}{1}/api/{2}/road/get/id/{3}" \
+            .format(self.protocol, self.base_url, self.api_version, \
+            road_id)
         road = urllib2.urlopen(get_url)
         road = road.read()
         return json.loads(road)
         
-    def updates(self,road_id):
-        """
-        road/get:
+    def updates(self, road_id):
+        """road/get:
             Retrieve updates attached to a specific Interstate road.
         Parameters:
             - id(Road ID)
@@ -126,9 +121,9 @@ class Road(InterstateApp):
         Outputs: JSON
         See: http://interstateapp.com/developers/method/1/1
         """
-        updates_url = "{0}{1}/api/{2}/road/updates/id/{3}"\
-            .format(self.protocol,self.base_url,self.api_version\
-            ,road_id)
+        updates_url = "{0}{1}/api/{2}/road/updates/id/{3}" \
+            .format(self.protocol, self.base_url, self.api_version, \
+            road_id)
         road = urllib2.urlopen(updates_url)
         road = road.read()
         return json.loads(road)
