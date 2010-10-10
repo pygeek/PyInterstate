@@ -1,6 +1,11 @@
-Pythonic InterstateAPI Wrapper
-    (http://interstateapp.com)
+Pythonic Interstate Wrapper
+    (www.interstateapp.com)
 
+Author: Clinton Christian (pygeek)
+        Twitter: @pygeek
+        Website: www.pygeek.com
+
+About:
     API Objects & Methods:
         -Roadmap Object:
         --roadmap/get
