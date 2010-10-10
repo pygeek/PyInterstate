@@ -35,8 +35,8 @@ class InterstateApp(object):
         self.protocol = "http://"
         self.base_url = "interstateapp.com"
         self.api_version = "v1"
-        public_key = "e88846d18fbb535a3deb5dff33253e691284691984.8324-pygeek"
-        private_key = "3cc292f563039656d37a00a20082bb44a4647d41c7b1a5b63b42847367c4ef89"
+        public_key = "public-key"
+        private_key = "private-key"
         
         """Installing opener authentication for inevitable, \
             subsequent requests
